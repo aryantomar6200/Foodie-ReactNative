@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, FlatList, Pressable, ScrollView,
  } from 'react-native'
 import React, { useState } from 'react'
 import { RESTAURANTS_LIST } from '../data/constants'
-import { RootStackParamList } from '../App'
+import { AppStackParamsList } from  '../routes/AppStack'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'; 
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,7 +12,7 @@ import RestaurantItem from '../components/RestaurantItem'
 
 
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>
+type HomeScreenProps = NativeStackScreenProps<AppStackParamsList, 'Home'>
 
 export default function Home({ navigation }: HomeScreenProps) {
 

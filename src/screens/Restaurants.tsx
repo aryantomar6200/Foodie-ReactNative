@@ -2,14 +2,14 @@ import { StyleSheet, Text, View, Image, ScrollView, Pressable, FlatList, Touchab
 import React, { use, useState } from 'react'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../App'
+import { AppStackParamsList } from  '../routes/AppStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'; 
 
 
 
 
-type RestaurantsScreenProps = NativeStackScreenProps<RootStackParamList, 'Restaurants'>
+type RestaurantsScreenProps = NativeStackScreenProps<AppStackParamsList, 'Restaurants'>
 
 export default function Restaurants({route}: RestaurantsScreenProps) {
 

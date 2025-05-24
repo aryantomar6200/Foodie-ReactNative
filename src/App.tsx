@@ -1,6 +1,7 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -13,43 +14,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Restaurants from './screens/Restaurants';
+import Signup from './screens/Signup';
+import Router from './routes/Router';
+import {AppStack} from './routes/AppStack';
+import {AuthStack} from './routes/AuthStack';
+import { AppwriteProvider } from './appwrite/AppwriteContext';
 
-export type RootStackParamList = {
-  Home: undefined,
-  Restaurants: {restaurant: Restaurants, }
-  
-}
-
-
-const Stack = createNativeStackNavigator<RootStackParamList>()
 
 
 function App(): React.JSX.Element {
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName = "Home"        
-      >
-        
-        <Stack.Screen 
-          name="Home" 
-          component={Home} 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
-          name="Restaurants" 
-          component={Restaurants} 
-          options={{ headerShown: false }}
-        />
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+
+  <AppwriteProvider>
+    <Router />
+  </AppwriteProvider>
+
   );
 }
 
-const styles = StyleSheet.create({
-
-});
 
 export default App;
