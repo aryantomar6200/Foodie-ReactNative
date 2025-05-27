@@ -17,10 +17,10 @@ const Stack = createNativeStackNavigator<AuthStackParamsList>()
 
 export const AuthStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Signup' screenOptions={{ headerShown: false }}>
 
-      <Stack.Screen name='Login' component={Login} />
-      <Stack.Screen name='Signup' component={Signup}/> 
+      <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name='Signup' component={Signup} options={{ headerShown: false }} />
 
 
     </Stack.Navigator>

@@ -7,8 +7,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 
 export type AppStackParamsList = {
-    Home: undefined,
-    Restaurants: {restaurant: Restaurants, }
+  Home: undefined,
+  Restaurants: { restaurant: Restaurants, }
 }
 
 
@@ -18,8 +18,8 @@ export const AppStack = () => {
   return (
     <Stack.Navigator>
 
-      <Stack.Screen name='Home' component={Home}/>
-      <Stack.Screen name='Restaurants' component={Restaurants}/>
+      <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name='Restaurants' component={Restaurants} options={{ headerShown: false }} />
 
     </Stack.Navigator>
   )

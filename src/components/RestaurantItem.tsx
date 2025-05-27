@@ -1,29 +1,29 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import {PropsWithChildren} from "react"
-import FontAwesome from 'react-native-vector-icons/FontAwesome'; 
+import { PropsWithChildren } from "react"
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 type RestaurantItemProps = PropsWithChildren<{
     restaurant: Restaurants
 }>
 
 
-const RestaurantItem = ({restaurant}: RestaurantItemProps) => {
+const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
 
-  return (
-    <View style = {styles.container}>
-        <View>
-            <Image source={{ uri: restaurant.image }} style={styles.image} />
+    return (
+        <View style={styles.container}>
+            <View>
+                <Image source={{ uri: restaurant.image }} style={styles.image} />
+            </View>
+
+            <View>
+                <Text style={styles.name}>{restaurant.name}</Text>
+
+                <Text style={styles.openhours}> <Text style={{ fontWeight: 'bold', color: '#2c3e50', fontSize: 15 }}>Open Hours -</Text> {restaurant.openHours}</Text>
+            </View>
+
         </View>
-
-        <View>
-            <Text style= {styles.name}>{restaurant.name}</Text>
-
-            <Text style= {styles.openhours}> <Text style={{fontWeight: 'bold', color: '#2c3e50', fontSize: 15}}>Open Hours -</Text> {restaurant.openHours}</Text>
-        </View>
-
-    </View>  
-  )
+    )
 }
 
 const styles = StyleSheet.create({
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#2c3e50',
         marginTop: 10,
-    }, 
+    },
 
     address: {
         fontSize: 15,

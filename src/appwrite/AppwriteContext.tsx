@@ -14,22 +14,21 @@ type AppwriteContextType = {
 export const AppwriteContext = createContext<AppwriteContextType>({
     appwrite: new Appwrite(),
     isLoggedIn: false,
-    setIsLoggedIn: () => {},
+    setIsLoggedIn: () => { },
 })
 
-export const AppwriteProvider: FC<PropsWithChildren> = ({children}) => {
+export const AppwriteProvider: FC<PropsWithChildren> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const defaultValue = {
         appwrite: new Appwrite(),
         isLoggedIn,
         setIsLoggedIn,
     }
-  return (
-    <AppwriteContext.Provider value={defaultValue}>
-        {children}
-    </AppwriteContext.Provider>
-  )
+    return (
+        <AppwriteContext.Provider value={defaultValue}>
+            {children}
+        </AppwriteContext.Provider>
+    )
 }
 
 
- 

@@ -2,18 +2,18 @@ import { StyleSheet, Text, View, Image, ScrollView, Pressable, FlatList, Touchab
 import React, { use, useState } from 'react'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AppStackParamsList } from  '../routes/AppStack'
+import { AppStackParamsList } from '../routes/AppStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'; 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 
 
 type RestaurantsScreenProps = NativeStackScreenProps<AppStackParamsList, 'Restaurants'>
 
-export default function Restaurants({route}: RestaurantsScreenProps) {
+export default function Restaurants({ route }: RestaurantsScreenProps) {
 
-  const {restaurant} = route.params
+  const { restaurant } = route.params
   const categories = Object.keys(restaurant.menu);
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
@@ -22,87 +22,87 @@ export default function Restaurants({route}: RestaurantsScreenProps) {
 
   return (
     <SafeAreaView>
-      
-      <View style = {styles.container}>
+
+      <View style={styles.container}>
 
         <View>
           <Text style={styles.welcomeTxt}>Welcome to <Text style={styles.restaurantName}>{restaurant.name}</Text></Text>
         </View>
 
-        <Image 
-          source={{ uri: restaurant.image }} 
-          style={{ width: '100%', height: 270, borderRadius: 20, marginTop: 15, marginBottom: 10,}}
+        <Image
+          source={{ uri: restaurant.image }}
+          style={{ width: '100%', height: 200, borderRadius: 20, marginTop: 15, marginBottom: 10, }}
         />
 
 
-        <View style = {styles.addresscontainer}>
+        <View style={styles.addresscontainer}>
           <FontAwesome name='map-pin' size={22} />
-          <Text style={{fontSize: 14, fontWeight: 'bold', color: '#2c3e50', paddingTop:3}}>{restaurant.address}</Text>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#2c3e50', paddingTop: 3 }}>{restaurant.address}</Text>
         </View>
 
-        <View style = {styles.phonecontainer}>
+        <View style={styles.phonecontainer}>
           <FontAwesome name='phone' size={20} />
-          <Text style={{fontSize: 13, fontWeight: 'bold', color: '#2c3e50', paddingTop:-1}}>{restaurant.phone}</Text>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#2c3e50', paddingTop: -1 }}>{restaurant.phone}</Text>
         </View>
-       
+
         <View style={styles.categorycontainer}>
 
-            <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', gap: 10 }}>
-              
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
+          <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', gap: 10 }}>
 
-                {categories.map((category) => (
-                  <TouchableOpacity
-                    key={category}
-                    onPress={() => setSelectedCategory(category)}
-                    style={{
-                      backgroundColor: selectedCategory === category ? '#f39c12' : '#eee',
-                      padding: 20,
-                      marginRight: 10,
-                      borderRadius: 20,
-                      borderWidth: selectedCategory === category ? 0 : 1,
-                      borderColor: selectedCategory === category ? '#f39c12' : '#ccc',
-                    }}
-                  >
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
 
-                    <Text style={{ color: selectedCategory === category ? '#fff' : '#2c3e50', fontWeight: 'bold' }}>
-                      {category}
-                    </Text>
+              {categories.map((category) => (
+                <TouchableOpacity
+                  key={category}
+                  onPress={() => setSelectedCategory(category)}
+                  style={{
+                    backgroundColor: selectedCategory === category ? '#f39c12' : '#eee',
+                    padding: 20,
+                    marginRight: 10,
+                    borderRadius: 20,
+                    borderWidth: selectedCategory === category ? 0 : 1,
+                    borderColor: selectedCategory === category ? '#f39c12' : '#ccc',
+                  }}
+                >
 
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </View>
+                  <Text style={{ color: selectedCategory === category ? '#fff' : '#2c3e50', fontWeight: 'bold' }}>
+                    {category}
+                  </Text>
 
-      {/* Items List */}
-            <View>
-              <FlatList
-                data={items}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                  <View style={styles.itemContainer}>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
 
-                    <Image source={{ uri: item.image }} style={{ width: 80, height: 80, borderRadius: 10 }} />
+          {/* Items List */}
+          <View style={{ marginTop: 25 }}>
+            <FlatList
+              data={items}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <View style={styles.itemContainer}>
 
-                    <View style={{ marginLeft: 12, flex: 1 }}>
-                      <Text style={{ fontWeight: 'bold', fontSize: 17 }}>{item.name}</Text>
+                  <Image source={{ uri: item.image }} style={{ width: 80, height: 80, borderRadius: 10 }} />
 
-                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 8, paddingRight: 15 }}>
-                        <Text style={styles.priceTxt}>{item.price}</Text>
-                        <Text style={styles.priceTxt}>⭐ {item.rating}</Text>
-                      </View>
-                      
+                  <View style={{ marginLeft: 12, flex: 1 }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 17 }}>{item.name}</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 8, paddingRight: 15 }}>
+                      <Text style={styles.priceTxt}>{item.price}</Text>
+                      <Text style={styles.priceTxt}>⭐ {item.rating}</Text>
                     </View>
 
                   </View>
-                )}
-              />
-            </View>
-    </View>
+
+                </View>
+              )}
+            />
+          </View>
+        </View>
 
 
-            
-        
+
+
       </View>
 
     </SafeAreaView>
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     color: '#f39c12',
   },
   addresscontainer: {
-    marginTop:10,
-  
+    marginTop: 10,
+
     flexDirection: 'row',
     gap: 10
   },
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 20,
   },
-  
+
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
